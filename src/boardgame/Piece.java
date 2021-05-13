@@ -4,9 +4,11 @@ public class Piece {
 	protected  Position position;
 	private Board board;
 	
+	
 	protected Board getBoard() {
 		
 		return board;
+		
 	}
 
 	
