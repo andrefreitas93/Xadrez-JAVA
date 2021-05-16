@@ -1,5 +1,10 @@
 package Application;
+
+
+import java.util.Scanner;
+
 import chess.ChessPiece;
+import chess.ChessPosition;
 import chess.Color;
 public class UserInterface {
 	public static final String ANSI_RESET = "\u001B[0m";
@@ -21,6 +26,20 @@ public class UserInterface {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
+	
+	public static ChessPosition readChessPosition(Scanner sc) throws Exception {
+	    try {
+	    	String s  = sc.nextLine();
+	    	char column = s.charAt(0);
+	    	int row = Integer.parseInt(s.substring(1));
+	    	return new ChessPosition(column, row);
+		
+	    }catch (RuntimeException e){
+	    	throw new Exception("Erro lendo posição de Xadrez. Valores válidos A1 atá H8");
+	    	
+	    }
+		
+	}
 	public static void printBoard(ChessPiece[][] pieces) {
 		for (int i = 0; i<pieces.length; i++) {
 			System.out.print((8 - i)+ " ");
@@ -51,5 +70,5 @@ public class UserInterface {
 		}
 		System.out.print("");
 	}
-
+   
 }
